@@ -1,0 +1,5 @@
+https://www.youtube.com/watch?v=rzBVTPaUUDg&list=PLZm85UZQLd2TPXpUJfDEdWTSgszionbJy
+
+Ustawienia startera libGdx  -  https://youtu.be/rzBVTPaUUDg?list=PLZm85UZQLd2TPXpUJfDEdWTSgszionbJy&t=198
+
+Ustawienia kompilowania do desktop (domyślnie jest tylko android)  -  https://youtu.be/rzBVTPaUUDg?list=PLZm85UZQLd2TPXpUJfDEdWTSgszionbJy&t=299
