@@ -17,12 +17,24 @@ public class Bird {
     }
 
     public void update(float dt){
-        velocity.add(0, GRAVITY, 0);
+        if (position.y > 0){
+            velocity.add(0, GRAVITY, 0);
+        }
         velocity.scl(dt);
         position.add(0, velocity.y, 0);
+        if (position.y < 0){
+            position.y = 0;
+        }
 
         velocity.scl(1/dt);
     }
+
+    public void jump(){
+        velocity.y = 250;
+    }
+
+
+    //GETTERY
 
     public Vector3 getPosition() {
         return position;
@@ -31,4 +43,5 @@ public class Bird {
     public Texture getTexture() {
         return bird;
     }
+
 }
