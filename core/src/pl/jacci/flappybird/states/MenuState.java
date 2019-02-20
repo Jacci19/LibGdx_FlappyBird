@@ -18,7 +18,7 @@ public class MenuState extends State{
 
     @Override
     public void handleInput() {
-        if(Gdx.input.justTouched()){
+        if(Gdx.input.justTouched()){                                            //na kliknięcie gdziekolwiek na ekranie
             gsm.set(new PlayState(gsm));
         }
     }

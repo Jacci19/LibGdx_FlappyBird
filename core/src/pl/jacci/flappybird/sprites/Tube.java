@@ -9,16 +9,16 @@ import java.util.Random;
 public class Tube {
     public static final int TUBE_WIDTH = 52;
 
-    private static final int FLUCTUATION = 130;
-    private static final int TUBE_GAP = 100;
-    private static final int LOWEST_OPENING = 120;
+    private static final int FLUCTUATION = 120;             // różnice położenia otworów pomiędzy każdą parze tub. Gdy = 1 otwory mają zawsze to samo położenie Y.
+    private static final int TUBE_GAP = 150;                // rozmiar otworu - odstęp pomiędzy górną a dolną tubą
+    private static final int LOWEST_OPENING = 110;          // minimalna wyskokość położenia otworu
 
-    private Texture topTube, bottomTube;
-    private Vector2 posTopTube, posBotTube;
-    private Rectangle boundsTop, boundsBot;
+    private Texture topTube, bottomTube;                    // górna i dolna tuba
+    private Vector2 posTopTube, posBotTube;                 // pozycje tub (współrzędne)
+    private Rectangle boundsTop, boundsBot;                 // prostokąty określające tuby (potrzebne do wykrywania kolizji)
     private Random rand;
 
-    public Tube(float x){
+    public Tube(float x){                                                                            // x - położenie x tuby
         topTube = new Texture("toptube.png");
         bottomTube = new Texture("bottomtube.png");
         rand = new Random();
@@ -30,14 +30,14 @@ public class Tube {
         boundsBot = new Rectangle(posBotTube.x, posBotTube.y, bottomTube.getWidth(), bottomTube.getHeight());
     }
 
-    public void reposition(float x){                    //zmiana pozycji tub gdy wyjdą za lewą krawędź ekranu
+    public void reposition(float x){                    //przenosi tuby na prawą stronę gdy wyjdą za lewą krawędź ekranu
         posTopTube.set(x, rand.nextInt(FLUCTUATION) + TUBE_GAP + LOWEST_OPENING);
         posBotTube.set(x, posTopTube.y - TUBE_GAP - bottomTube.getHeight());
         boundsTop.setPosition(posTopTube.x, posTopTube.y);
         boundsBot.setPosition(posBotTube.x, posBotTube.y);
     }
 
-    public boolean collides(Rectangle player){
+    public boolean collides(Rectangle player){                              //zwraca true jeśli ptak koliduje z górną lub dolną tubą
         return player.overlaps(boundsTop) || player.overlaps(boundsBot);
     }
 

@@ -2,17 +2,15 @@ package pl.jacci.flappybird.sprites;
 
 /**omówienie w lekcji 13:   https://www.youtube.com/watch?v=G44YMwBoJXM&list=PLZm85UZQLd2TPXpUJfDEdWTSgszionbJy&index=13    */
 
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
 public class Animation {
-    private Array<TextureRegion> frames;        //trzyma wszystkie ramki animacji
+    private Array<TextureRegion> frames;        // trzyma wszystkie ramki animacji
     private float maxFrameTime;                 // czas trwania pojedynczej ramki
     private float currentFrameTime;
-    private int frameCount;
-    private int frame;
+    private int frameCount;                     // ilość ramek w animacji (tu: 3)
+    private int frame;                          // aktualna ramka (tu: jedna z trzech)
 
     public Animation(TextureRegion region, int frameCount, float cycleTime){
         frames = new Array<TextureRegion>();
@@ -26,6 +24,7 @@ public class Animation {
     }
 
     public void update(float dt){
+        System.out.println("Frame: " + frame);
         currentFrameTime += dt;
         if(currentFrameTime > maxFrameTime){
             frame++;
